@@ -5,43 +5,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GR Analysis - Results page</title>
+    <title>Stefaan Van wal - Digital portfolio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
-    <!-- Introductory section -->
+
     <section class="section">
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-                This page will be extended into my personal portfolio in the near future. For the moment, it contains
-                the
-                results of the <b>gr-analysis</b> project, which performs quality analysis of long-distance hiking
-                trails in
-                Flanders
-                (Belgium). For more information about the project (methodology and code), visit <a
-                    href="https://github.com/svanwal/gr-analysis">the GitHub repository.</a>
+
+        <!-- Title -->
+        <h1 class="title has-text-centered
+                is-size-1-fullhd is-size-1-widescreen is-size-2-desktop is-size-3-tablet is-size-4-mobile">
+            Stefaan Van wal
+        </h1>
+
+        <!-- Introductory text -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-6-fullhd is-6-widescreen is-12-desktop is-12-tablet is-12-mobile">
+                This page (under construction) contains my digital project portfolio.
             </div>
         </div>
-    </section>
 
-    <!-- GR Results section -->
-    <section class="section">
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
+        <!-- Project cards -->
+        <div class="columns is-centered">
+
+            <!-- gr-analysis -->
+            <div class="column is-4-fullhd is-4-widescreen is-4-desktop is-4-tablet is-12-mobile is-centered">
                 <div class="card">
+                    <header class="card-header has-background-primary">
+                        <p
+                            class="card-header-title is-centered has-text-primary-light
+                                is-size-4-fullhd is-size-5-widescreen is-size-5-desktop is-size-6-tablet is-size-6-mobile">
+                            gr-analysis
+                        </p>
+                    </header>
                     <div class="card-content">
-                        <div class="content">
-                            Click the links below to view the result pages for the respective GR trails.
-                        </div>
+                        <figure class="image mb-4">
+                            <img src="images/project_gr-analysis.jpg" alt="">
+                        </figure>
+                        <p class="mb-4">
+                            The nonprofit organization Grote Routepaden manages long-distance hiking trails in Flanders
+                            and has established several quality criteria to which these trails should conform. This
+                            project uses data analysis techniques with Open Street Maps data, in order to quantify the
+                            degree to which the GR trails satisfy these quality criteria.
+                        </p>
+                        <footer class="card-footer has-background-light">
+                            <button class="button is-link is-outlined is-fullwidth"
+                                onclick="window.location.href='gr-analysis.html';">Go to project page</button>
+                        </footer>
                     </div>
-                    <footer class="card-footer">
-                        <a href="gr122_overview.html" class="card-footer-item">GR122</a>
-                        <a href="gr131_overview.html" class="card-footer-item">GR131</a>
-                        <a href="gr564_overview.html" class="card-footer-item">GR564</a>
-                    </footer>
                 </div>
             </div>
+
         </div>
     </section>
 
