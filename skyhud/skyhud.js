@@ -10,6 +10,7 @@ function handleOrientation(event) {
     const alpha = event.alpha;
     const beta = event.beta;
     const gamma = event.gamma;
+    console.log(alpha);
     text_alpha.innerText = `The alpha angle is ${alpha} deg`;
     text_beta.innerText = `The beta angle is ${beta} deg`;
     text_gamma.innerText = `The gamma angle is ${gamma} deg`;
@@ -34,11 +35,11 @@ button.addEventListener('click', function () {
                 }
             })
             .catch(console.error);
-        console.log('You do not have an iOS 13+ device!');
+        button.innerText = 'iOS 13+ device detected';
     } else {
         // Handle regular non iOS 13+ devices.
         window.addEventListener('devicemotion', handleOrientation);
-        console.log('You do not have an iOS 13+ device!');
+        button.innerText = 'You do not have an iOS 13+ device!';
     }
 
 });
