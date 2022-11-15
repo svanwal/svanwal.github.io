@@ -26,7 +26,7 @@ window.addEventListener("deviceorientation", function (e) {
     document.getElementById("alpha").innerText = alpha.toFixed(0);
     document.getElementById("beta").innerText = beta.toFixed(0);
     document.getElementById("gamma").innerText = gamma.toFixed(0);
-    document.getElementById("horizon").style.transform = `rotate(${-beta.toFixed(0)}deg)`;
+    document.getElementById("horizon").style.transform = `rotate(${90 - beta.toFixed(0)}deg)`;
     // document.getElementById("horizon").style.transform = `rotate(${-10}deg)`;
 });
 
