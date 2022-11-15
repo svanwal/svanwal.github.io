@@ -19,13 +19,15 @@ document.getElementById("button").onclick = function () {
     }
 };
 
+// document.getElementById("horizon").style.transform = `rotate(${-80}deg)`;
+
 window.addEventListener("deviceorientation", function (e) {
     const { alpha, beta, gamma } = e;
     document.getElementById("alpha").innerText = alpha.toFixed(0);
     document.getElementById("beta").innerText = beta.toFixed(0);
     document.getElementById("gamma").innerText = gamma.toFixed(0);
-    document.getElementById("horizon").style.transform = `rotate(${-gamma.toFixed(0)}deg)`;
-
+    document.getElementById("horizon").style.transform = `rotate(${-beta.toFixed(0)}deg)`;
+    // document.getElementById("horizon").style.transform = `rotate(${-10}deg)`;
 });
 
 // const text_alpha = document.querySelector('#text_alpha');
