@@ -30,6 +30,14 @@ window.addEventListener("deviceorientation", function (e) {
     // document.getElementById("horizon").style.transform = `rotate(${-10}deg)`;
 });
 
+const width = window.innerWidth || document.documentElement.clientWidth ||
+    document.body.clientWidth;
+const height = window.innerHeight || document.documentElement.clientHeight ||
+    document.body.clientHeight;
+
+console.log(width, height);
+
+
 // const text_alpha = document.querySelector('#text_alpha');
 // const text_beta = document.querySelector('#text_beta');
 // const text_gamma = document.querySelector('#text_gamma');
