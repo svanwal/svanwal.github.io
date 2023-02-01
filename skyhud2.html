@@ -80,7 +80,7 @@
                 DeviceMotionEvent.requestPermission()
                     .then((state) => {
                         if (state === 'granted') {
-                            window.addEventListener('devicemotion', handleOrientation);
+                            window.addEventListener('deviceorientation', handleOrientation);
                             permissionButton.style.display = 'none';
                             draw();
                         } else {
@@ -92,15 +92,15 @@
                 // Handle regular non iOS 13+ devices.
                 window.addEventListener('deviceorientation', handleOrientation);
                 permissionButton.style.display = 'none';
-                draw();
+                // draw();
             }
         }
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawHorizon(deviceOrientation.alpha, deviceOrientation.beta, deviceOrientation.gamma);
-            requestAnimationFrame(draw);
-        }
+        // function draw() {
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //     drawHorizon(deviceOrientation.alpha, deviceOrientation.beta, deviceOrientation.gamma);
+        //     requestAnimationFrame(draw);
+        // }
 
         permissionButton.addEventListener('click', onClick);
         animate();
