@@ -19,26 +19,8 @@
     <canvas id="augmented-reality"></canvas>
     <button id="permission-button">Request Permission</button>
     <script>
-
-        function onClick() {
-            if (typeof DeviceMotionEvent.requestPermission === 'function') {
-                // Handle iOS 13+ devices.
-                DeviceMotionEvent.requestPermission()
-                    .then((state) => {
-                        if (state === 'granted') {
-                            window.addEventListener('devicemotion', handleOrientation);
-                        } else {
-                            console.error('Request to access the orientation was rejected');
-                        }
-                    })
-                    .catch(console.error);
-            } else {
-                // Handle regular non iOS 13+ devices.
-                window.addEventListener('devicemotion', handleOrientation);
-            }
-        }
-
         const canvas = document.getElementById("augmented-reality");
+        const permissionButton = document.getElementById("permission-button");
         const ctx = canvas.getContext("2d");
 
         // Set the canvas to the size of the device's screen
@@ -52,34 +34,56 @@
             gamma: 0
         };
 
-        // Listen for changes in the device's orientation
-        window.addEventListener("deviceorientation", event => {
+        function handleOrientation(event) {
             deviceOrientation = {
                 alpha: event.alpha,
                 beta: event.beta,
                 gamma: event.gamma
             };
-        });
-
-        // Animate the sun's position based on the device's orientation
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Calculate the position of the sun based on the device's orientation
-            const x = canvas.width / 2 + (deviceOrientation.gamma / 90) * (canvas.width / 2);
-            const y = canvas.height / 2 + (deviceOrientation.beta / 90) * (canvas.height / 2);
-
-            // Draw the sun at its calculated position
-            ctx.beginPath();
-            ctx.arc(x, y, 50, 0, 2 * Math.PI);
-            ctx.fillStyle = "yellow";
-            ctx.fill();
-
-            requestAnimationFrame(animate);
         }
 
-        animate();
+        function drawHorizon(alpha, beta, gamma) {
+            // Calculate the horizon line position based on the device orientation
+            let x1 = canvas.width / 2;
+            let y1 = canvas.height / 2 - beta * canvas.height / 90;
+            let x2 = canvas.width;
+            let y2 = canvas.height / 2;
+
+            // Draw the horizon line
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+
+        function onClick() {
+            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+                // Handle iOS 13+ devices.
+                DeviceMotionEvent.requestPermission()
+                    .then((state) => {
+                        if (state === 'granted') {
+                            window.addEventListener('devicemotion', handleOrientation);
+                            permissionButton.style.display = 'none';
+                            draw();
+                        } else {
+                            console.error('Request to access the orientation was rejected');
+                        }
+                    })
+                    .catch(console.error);
+            } else {
+                // Handle regular non iOS 13+ devices.
+                window.addEventListener('devicemotion', handleOrientation);
+                permissionButton.style.display = 'none';
+                draw();
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawHorizon(deviceOrientation.alpha, deviceOrientation.beta, deviceOrientation.gamma);
+            requestAnimationFrame(draw);
+        }
+
+        permissionButton.addEventListener('click', onClick);
     </script>
 </body>
-
-</html>
