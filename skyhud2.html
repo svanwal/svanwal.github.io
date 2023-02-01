@@ -69,6 +69,8 @@
             ctx.fillStyle = "yellow";
             ctx.fill();
 
+            console.log(`Device orientation updated to ${deviceOrientation.alpha} ${deviceOrientation.beta} ${deviceOrientation.gamma}`)
+
             requestAnimationFrame(animate);
         }
 
@@ -88,7 +90,7 @@
                     .catch(console.error);
             } else {
                 // Handle regular non iOS 13+ devices.
-                window.addEventListener('devicemotion', handleOrientation);
+                window.addEventListener('deviceorientation', handleOrientation);
                 permissionButton.style.display = 'none';
                 draw();
             }
