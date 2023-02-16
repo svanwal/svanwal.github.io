@@ -42,20 +42,6 @@
             };
         }
 
-        // function drawHorizon(alpha, beta, gamma) {
-        //     // Calculate the horizon line position based on the device orientation
-        //     let x1 = canvas.width / 2;
-        //     let y1 = canvas.height / 2 - beta * canvas.height / 90;
-        //     let x2 = canvas.width;
-        //     let y2 = canvas.height / 2;
-
-        //     // Draw the horizon line
-        //     ctx.beginPath();
-        //     ctx.moveTo(x1, y1);
-        //     ctx.lineTo(x2, y2);
-        //     ctx.stroke();
-        // }
-
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -92,15 +78,8 @@
                 // Handle regular non iOS 13+ devices.
                 window.addEventListener('deviceorientation', handleOrientation);
                 permissionButton.style.display = 'none';
-                // draw();
             }
         }
-
-        // function draw() {
-        //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //     drawHorizon(deviceOrientation.alpha, deviceOrientation.beta, deviceOrientation.gamma);
-        //     requestAnimationFrame(draw);
-        // }
 
         permissionButton.addEventListener('click', onClick);
         animate();
